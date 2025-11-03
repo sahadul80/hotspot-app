@@ -1,7 +1,6 @@
 // src/app/[lang]/layout.tsx
-import { locales } from '../lib/i18n';
+import { locales, type Locale } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-import { Locale } from '../lib/i18n';
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -9,19 +8,21 @@ export async function generateStaticParams() {
 
 interface LangLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>; // Change to string instead of Locale
 }
 
 export default async function LangLayout({
   children,
   params
 }: LangLayoutProps) {
-  // Await the params in server component
   const { lang } = await params;
+  
+  // Validate and type-cast the lang parameter
+  const validatedLang = locales.includes(lang as Locale) ? (lang as Locale) : 'en';
 
   return (
     <div className="relative">
-      <LanguageSwitcher currentLang={lang} />
+      <LanguageSwitcher currentLang={validatedLang} />
       {children}
     </div>
   );
