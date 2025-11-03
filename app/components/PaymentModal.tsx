@@ -86,11 +86,11 @@ export default function PaymentModal({ isOpen, onClose, package: pkg, messages, 
 
   return (
     <div className="modal-overlay animate-fade-in">
-      <div className="modal-content max-w-md w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+      <div className="modal-content w-full max-h-[90vh] overflow-y-auto animate-scale-in">
         {/* Header */}
         <div className="bg-primary p-4 rounded-t-lg">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-white text-shadow">{messages.title}</h2>
+            <h4 className="text-xl font-bold text-shadow">{messages.title}</h4>
             <button
               onClick={handleClose}
               className="text-white hover:text-blue-200 text-2xl font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded"
@@ -100,27 +100,26 @@ export default function PaymentModal({ isOpen, onClose, package: pkg, messages, 
               ×
             </button>
           </div>
-          <div className="mt-3 text-blue-100">
-            <p className="font-semibold text-lg">{pkg.speed} Package</p>
-            <p className="text-xl font-bold">{pkg.price}/month</p>
+          <div className="text-start">
+            {pkg.speed} Package <br/> {pkg.price}/month
           </div>
         </div>
 
         {/* Content */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="p-2 sm:p-4 space-y-2">
           {/* Payment Methods */}
           <div>
-            <h3 className="form-label mb-4 text-text-primary high-contrast">
+            <h4 className="text-text-primary high-contrast">
               {messages.selectMethod}
-            </h3>
-            <div className="space-y-3">
+            </h4>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-center">
               {paymentMethods.map((method) => (
                 <button
                   key={method.id}
                   type="button"
-                  className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
+                  className={`w-full text-left p-2 sm:p-4 rounded-lg border-2 transition-all duration-200 ${
                     selectedMethod === method.id
-                      ? 'border-primary bg-accent elevation-1'
+                      ? 'border-primary bg-background elevation-1'
                       : 'border-border bg-surface hover:border-primary hover:elevation-1'
                   }`}
                   onClick={() => setSelectedMethod(method.id)}
@@ -134,7 +133,7 @@ export default function PaymentModal({ isOpen, onClose, package: pkg, messages, 
                       }`}>
                         {method.name}
                       </div>
-                      <div className="text-sm text-text-secondary mt-1">
+                      <div className="text-sm text-text-secondary">
                         {method.description}
                       </div>
                     </div>
@@ -230,14 +229,14 @@ export default function PaymentModal({ isOpen, onClose, package: pkg, messages, 
 
           {/* Internet Banking Info */}
           {selectedMethod === 'internet' && (
-            <div className="p-4 bg-warning border border-yellow-200 rounded-lg animate-fade-in">
+            <div className="p-4 bg-warning rounded-lg animate-fade-in">
               <div className="flex items-start space-x-3">
-                <span className="text-yellow-600 text-lg">ℹ️</span>
+                <span className="text-lg">ℹ️</span>
                 <div>
-                  <p className="text-yellow-800 font-medium mb-1">Internet Banking</p>
-                  <p className="text-yellow-700 text-sm">
+                  <h5 className="font-medium">Internet Banking</h5>
+                  <h6 className="font-base">
                     You will be redirected to your bank's secure payment gateway to complete the transaction.
-                  </p>
+                  </h6>
                 </div>
               </div>
             </div>

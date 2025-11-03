@@ -85,19 +85,19 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
   return (
     <div className="card elevation-2 overflow-hidden animate-fade-in">
       {/* Header */}
-      <div className="bg-primary p-6 text-center">
-        <h2 className="text-2xl font-bold text-white text-shadow">
+      <div className="bg-primary p-2 sm:p-4 text-center">
+        <h3 className="text-lg sm:text-2xl font-bold">
           {messages.login.title}
-        </h2>
-        <p className="text-blue-100 mt-2 text-sm">
+        </h3>
+        <h6 className="m-2 text-sm">
           {loginMode === 'voucher' ? 'Use your voucher code' : 'Enter your credentials'}
-        </p>
+        </h6>
       </div>
 
-      <div className="p-6">
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="p-2 sm:p-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           {/* Mode Selector */}
-          <div className="flex space-x-3 mb-2">
+          <div className="flex space-x-2">
             <button
               type="button"
               className={`flex-1 btn text-center font-medium ${
@@ -148,7 +148,7 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
             </label>
             <input
               id="username"
-              className="form-input text-center text-lg py-3"
+              className="form-input text-center text-md"
               name="username"
               type="text"
               value={formData.username}
@@ -173,7 +173,7 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
               </label>
               <input
                 id="password"
-                className="form-input text-center text-lg py-3"
+                className="form-input text-center text-md"
                 name="password"
                 type="password"
                 value={formData.password}
@@ -192,7 +192,7 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
           {/* Error Display */}
           {(error || config.error) && (
             <div 
-              className="p-4 bg-error text-white rounded-lg text-center animate-fade-in elevation-1"
+              className="p-2 sm:p-4 bg-error text-white rounded-lg text-center animate-fade-in elevation-1"
               role="alert"
               aria-live="polite"
             >
@@ -204,11 +204,11 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
           )}
 
           {/* Submit Button */}
-          <div className="pt-2">
+          <div className="m-2 sm:m-4">
             <button 
               type="submit" 
               disabled={isLoading}
-              className="w-full btn btn-success text-lg py-3 font-bold hover:elevation-2 transition-all duration-200"
+              className="w-full btn btn-success text-lg font-bold hover:elevation-2 transition-all duration-200"
               aria-busy={isLoading}
             >
               {isLoading ? (
@@ -228,7 +228,7 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
 
         {/* Trial Link */}
         {config.trial && (
-          <div className="mt-6 p-4 bg-primary text-white rounded-lg text-center animate-fade-in elevation-1">
+          <div className="m-2 sm:m-4 p-2 sm:p-4 bg-primary text-white rounded-lg text-center animate-fade-in elevation-1">
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
               <span className="text-blue-100">{messages.login.trial}</span>
               <button 
@@ -246,9 +246,6 @@ export default function LoginForm({ lang, messages, config, onLogin }: LoginForm
                 {messages.login.here}
               </button>
             </div>
-            <p className="text-blue-100 text-xs mt-2">
-              Experience our service with a free trial account
-            </p>
           </div>
         )}
 

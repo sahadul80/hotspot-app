@@ -112,20 +112,19 @@ export default function HomePackages({ messages }: HomePackagesProps) {
   return (
     <>
       <div className="card overflow-hidden elevation-2">
-        <div className="bg-accent p-4">
-          <h3 className="text-lg font-bold text-white text-center text-shadow">
+        <div className="bg-accent p-2 sm:p-4">
+          <h4 className="text-center text-shadow">
             {messages.packages}
-          </h3>
+          </h4>
         </div>
-        <div className="p-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="m-2 sm:m-4 p-2 sm:p-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
             {packages.map((pkg, index) => (
               <button
                 key={index}
                 onClick={() => handlePackageClick(pkg)}
                 className={`
-                  ${pkg.color} 
-                  text-white 
+                  ${pkg.color}
                   rounded-lg 
                   p-4 
                   min-h-[80px] 
@@ -146,10 +145,10 @@ export default function HomePackages({ messages }: HomePackagesProps) {
                 `}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-center justify-between h-full w-full px-8">
+                <div className="flex items-center justify-between h-full w-full p-2">
                   <div className="">
                     <div className="text-lg font-bold high-contrast">{pkg.speed}</div>
-                    <div className="text-sm opacity-90 mt-1">Unlimited Data</div>
+                    <div className="text-sm opacity-90">Unlimited Data</div>
                   </div>
                   <div className="">
                     <div className="text-xl font-bold high-contrast">{pkg.price}</div>
@@ -161,14 +160,14 @@ export default function HomePackages({ messages }: HomePackagesProps) {
           </div>
           
           {/* Additional Info */}
-          <div className="mt-6 text-center text-text-secondary">
+          <div className="m-2 sm:m-4 text-center text-text-secondary">
             <p className="text-sm">
-              <span className="inline-block mr-2">💡</span>
+              <span className="inline-block">💡</span>
               Click on any package to subscribe instantly
             </p>
           </div>
         </div>
-        <div className="bg-accent p-3 text-center">
+        <div className="bg-accent p-2 text-center">
           <div className="text-white text-sm">
             SRJ Internet - Reliable connectivity for your home
           </div>

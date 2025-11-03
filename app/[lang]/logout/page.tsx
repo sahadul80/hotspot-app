@@ -74,62 +74,62 @@ export default function LogoutPage({ params }: LogoutPageProps) {
 
   if (!isParamsResolved) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-xl p-8 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+      <div className="min-h-screen background flex items-center justify-center">
+        <div className="card p-8 text-center">
+          <div className="spinner border-primary border-t-transparent h-12 w-12 mx-auto mb-4"></div>
+          <p className="text-text-secondary">{messages.common.loading}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center py-8">
+    <div className="min-h-screen background flex items-center justify-center py-8">
       <div className="container mx-auto px-4">
         <div className="max-w-md mx-auto">
-          <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-            <div className="bg-blue-600 p-4 text-center">
+          <div className="card overflow-hidden">
+            <div className="bg-primary p-4 text-center">
               <h1 className="text-xl font-bold text-white">{messages.logout.title}</h1>
             </div>
             
             <div className="p-6">
               {/* Success Message */}
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-green-600">{messages.logout.success}</h2>
+                <h2 className="text-2xl font-bold text-success">{messages.logout.success}</h2>
               </div>
 
               {/* Session Summary */}
               {user && (
                 <div className="space-y-3 mb-6">
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <div className="text-sm text-gray-600">User</div>
-                      <div className="font-semibold">{user.username}</div>
+                    <div className="bg-surface p-3 rounded-lg">
+                      <div className="text-sm text-text-secondary">User</div>
+                      <div className="font-semibold text-text-primary">{user.username}</div>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <div className="text-sm text-gray-600">IP Address</div>
-                      <div className="font-semibold">{user.ip}</div>
+                    <div className="bg-surface p-3 rounded-lg">
+                      <div className="text-sm text-text-secondary">IP Address</div>
+                      <div className="font-semibold text-text-primary">{user.ip}</div>
                     </div>
                   </div>
                   
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm text-gray-600">MAC Address</div>
-                    <div className="font-semibold">{user.mac}</div>
+                  <div className="bg-surface p-3 rounded-lg">
+                    <div className="text-sm text-text-secondary">MAC Address</div>
+                    <div className="font-semibold text-text-primary">{user.mac}</div>
                   </div>
                   
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm text-gray-600">Upload | Download</div>
-                    <div className="font-semibold">{user.bytesIn} | {user.bytesOut}</div>
+                  <div className="bg-surface p-3 rounded-lg">
+                    <div className="text-sm text-text-secondary">Upload | Download</div>
+                    <div className="font-semibold text-text-primary">{user.bytesIn} | {user.bytesOut}</div>
                   </div>
                   
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm text-gray-600">Session Duration</div>
-                    <div className="font-semibold">{user.uptime}</div>
+                  <div className="bg-surface p-3 rounded-lg">
+                    <div className="text-sm text-text-secondary">Session Duration</div>
+                    <div className="font-semibold text-text-primary">{user.uptime}</div>
                   </div>
                 </div>
               )}
@@ -138,14 +138,14 @@ export default function LogoutPage({ params }: LogoutPageProps) {
               <div className="text-center">
                 <button
                   onClick={handleLoginAgain}
-                  className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+                  className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold"
                 >
                   {messages.logout.loginAgain}
                 </button>
               </div>
 
               {/* Additional Info */}
-              <div className="mt-6 text-center text-sm text-gray-600">
+              <div className="mt-6 text-center text-sm text-text-secondary">
                 <p>Thank you for using SRJ Internet services</p>
                 <p className="mt-1">We hope to see you again soon!</p>
               </div>

@@ -78,29 +78,29 @@ export default function StatusPage({ params }: StatusPageProps) {
 
   if (!isParamsResolved || isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-xl p-8 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+      <div className="min-h-screen background flex items-center justify-center">
+        <div className="card p-8 text-center">
+          <div className="spinner border-primary border-t-transparent h-12 w-12 mx-auto mb-4"></div>
+          <p className="text-text-secondary">{messages.common.loading}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-8">
+    <div className="min-h-screen background py-8">
       <div className="container mx-auto px-4">
         <div className="max-w-md mx-auto">
-          <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-            <div className="bg-blue-600 p-4 text-center">
+          <div className="card overflow-hidden">
+            <div className="bg-primary p-4 text-center">
               <h1 className="text-xl font-bold text-white">{messages.status.title}</h1>
             </div>
             
             <div className="p-6">
               {/* Welcome Message */}
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-green-600 mb-2">{messages.common.welcome}!</h2>
-                <h3 className="text-lg font-semibold text-gray-800" id="user">
+                <h2 className="text-2xl font-bold text-success mb-2">{messages.common.welcome}!</h2>
+                <h3 className="text-lg font-semibold text-text-primary" id="user">
                   {user?.username}
                 </h3>
               </div>
@@ -108,37 +108,37 @@ export default function StatusPage({ params }: StatusPageProps) {
               {/* Status Information */}
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm text-gray-600">{messages.status.ipAddress}</div>
-                    <div className="font-semibold">{user?.ip}</div>
+                  <div className="bg-surface p-3 rounded-lg">
+                    <div className="text-sm text-text-secondary">{messages.status.ipAddress}</div>
+                    <div className="font-semibold text-text-primary">{user?.ip}</div>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm text-gray-600">{messages.status.macAddress}</div>
-                    <div className="font-semibold">{user?.mac}</div>
+                  <div className="bg-surface p-3 rounded-lg">
+                    <div className="text-sm text-text-secondary">{messages.status.macAddress}</div>
+                    <div className="font-semibold text-text-primary">{user?.mac}</div>
                   </div>
                 </div>
 
-                <div className="bg-gray-50 p-3 rounded-lg">
-                  <div className="text-sm text-gray-600">{messages.status.upload} | {messages.status.download}</div>
-                  <div className="font-semibold">{user?.bytesIn} | {user?.bytesOut}</div>
+                <div className="bg-surface p-3 rounded-lg">
+                  <div className="text-sm text-text-secondary">{messages.status.upload} | {messages.status.download}</div>
+                  <div className="font-semibold text-text-primary">{user?.bytesIn} | {user?.bytesOut}</div>
                 </div>
 
-                <div className="bg-gray-50 p-3 rounded-lg">
-                  <div className="text-sm text-gray-600">{messages.status.uptime}</div>
-                  <div className="font-semibold">{user?.uptime}</div>
+                <div className="bg-surface p-3 rounded-lg">
+                  <div className="text-sm text-text-secondary">{messages.status.uptime}</div>
+                  <div className="font-semibold text-text-primary">{user?.uptime}</div>
                 </div>
 
                 {user?.remainBytesTotal && (
-                  <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-                    <div className="text-sm text-blue-600">{messages.status.remainingData}</div>
-                    <div className="font-semibold text-blue-700">{user.remainBytesTotal}</div>
+                  <div className="bg-background bg-opacity-10 p-3 rounded-lg border border-primary border-opacity-20">
+                    <div className="text-sm text-primary">{messages.status.remainingData}</div>
+                    <div className="font-semibold text-primary">{user.remainBytesTotal}</div>
                   </div>
                 )}
 
                 {user?.sessionTimeLeft && (
-                  <div className="bg-green-50 p-3 rounded-lg border border-green-200">
-                    <div className="text-sm text-green-600">{messages.status.remainingTime}</div>
-                    <div className="font-semibold text-green-700">{user.sessionTimeLeft}</div>
+                  <div className="bg-background bg-opacity-10 p-3 rounded-lg border border-success border-opacity-20">
+                    <div className="text-sm text-success">{messages.status.remainingTime}</div>
+                    <div className="font-semibold text-success">{user.sessionTimeLeft}</div>
                   </div>
                 )}
               </div>
@@ -147,7 +147,7 @@ export default function StatusPage({ params }: StatusPageProps) {
               <div className="mt-6">
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors font-semibold"
+                  className="w-full bg-error py-3 rounded-lg hover:bg-error hover:brightness-90 transition-all font-semibold"
                 >
                   {messages.status.logout}
                 </button>
